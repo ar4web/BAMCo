@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins,
-    base: mode === 'production' ? '/BAMCo/' : '/',
+    base: '/BAMCo/',
     envPrefix: ['VITE_', 'NEXT_PUBLIC_'],
     define: processEnvDefines,
   }

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #faf6ef;
+  --surface: #ffffff;
+  --ink: #251f18;
+  --muted: #6f6558;
+  --gold: #b8894a;
+  --line: rgba(37, 31, 24, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.66);
+}
+
+.dark {
+  --bg: #171310;
+  --surface: #1f1a15;
+  --ink: #f3ece1;
+  --muted: #a89a87;
+  --gold: #c9a05e;
+  --line: rgba(243, 236, 225, 0.12);
+  --glass-bg: rgba(35, 29, 23, 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --font-sans: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.25);
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+::selection {
+  background: var(--gold);
+  color: #1c1610;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--gold) 55%, var(--bg));
+  border-radius: 8px;
+}
